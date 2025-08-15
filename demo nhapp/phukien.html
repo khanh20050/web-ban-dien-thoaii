@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>K2B Smart Store</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: orange;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .search-bar input {
+      width: 400px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    nav {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: orange;
+      color: white;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: orange;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    .product p {
+      margin: 10px 0;
+    }
+
+    .price {
+      color: red;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: orange;
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    .search-wrapper {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-wrapper input {
+      width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #noResult {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"> K2B Smart Store📱</div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Tìm điện thoại, phụ kiện..." />
+    </div>
+  </header>
+  
+ <a href="index.html" class="back-button">← Quay lại cửa hàng</a>
+
+  <section class="section" id="phu-kien">
+    <h2>Phụ Kiện Chính Hãng</h2>
+    <div class="products">
+      <div class="product">
+        <img src="anh/air pod2.jpg" alt="AirPods Pro 2" />
+        <p>AirPods Pro 2</p>
+        <p class="price">5.990.000đ</p>
+        <p>
+          - Thiết kế: In-ear với eartips silicon
+          - Chip: Chip Apple H2 trong tai nghe, Chip U1 trong hộp sạc<br>
+          - Chất lượng âm thanh: Âm thanh chi tiết hơn, hỗ trợ Spatial Audio
+        </p>
+        <a href="phukien/airpod2.html" class="btn btn-outline-primary">Xem chi tiết</a>
+        <button onclick="addToCart('AirPods Pro 2', 5990000)">Thêm vào giỏ</button>
+      </div>
+      
+      <div class="product">
+        <img src="anh/sacduphong.jpg" alt="Sạc dự phòng" />
+        <p>Sạc Xmobile 10000mAh</p>
+        <p class="price">390.000đ</p>
+        <p>dòng T‑series hỗ trợ PD/QC 22.5 W, tốc độ sạc nhanh</p>
+        <a href="phukien/sacduphong.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('Sạc Xmobile', 390000)">Thêm vào giỏ</button>
+    </div>
+
+     <div class="product">
+        <img src="anh/daysacusbc.jpg" alt="Dây sạc" />
+        <p>Dây sạc USB-C</p>
+        <p class="price">250.000đ</p>
+        <p>Cắm được cả hai mặt, không cần lo chiều cắm
+          Hỗ trợ chuẩn sạc nhanh USB Power Delivery
+          Tốc độ có thể đạt đến 10gbps
+           Xuất được video 4K hoặc 8K qua cổng DisplayPort hoặc HDMI
+        </p>
+        <a href="phukien/daysac.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('Dây sạc USB-C', 250000)">Thêm vào giỏ</button>
+    </div>
+        
+    
+
+      
+      
+    </div>
+  </section>
+ 
+</body>
+<script>
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Thêm sản phẩm mới vào giỏ
+    cart.push({ name: name, price: price });
+
+    // Lưu lại vào localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Hỏi người dùng có muốn sang giỏ hàng không
+    if (confirm(`${name} đã được thêm vào giỏ hàng. Bạn có muốn xem giỏ hàng không?`)) {
+      window.location.href ='giohang.html'; // 👉 chuyển sang trang giỏ hàng
+    }
+  }
+</script>
+
+</html>

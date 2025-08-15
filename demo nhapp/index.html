@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>KKB Smart Store</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: orange;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .search-bar input {
+      width: 400px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    nav {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: orange;
+      color: white;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: orange;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    .product p {
+      margin: 10px 0;
+    }
+
+    .price {
+      color: red;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: orange;
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    .search-wrapper {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-wrapper input {
+      width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #noResult {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo"> K2B Smart Store📱</div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Tìm điện thoại, phụ kiện..." />
+    </div>
+  </header>
+
+  <!-- MENU -->
+  <nav>
+    <a href="dienthoai.html">Điện Thoại</a>
+    <a href="phukien.html">Phụ Kiện</a>
+    <a href="giohang.html">Giỏ Hàng và Thanh Toán</a>
+    <a href="dangnhap.html">Đăng nhập</a>
+    
+
+   
+  </nav>
+
+  <!-- ĐIỆN THOẠI -->
+  <section class="section" id="dien-thoai">
+    <h2>Điện Thoại Nổi Bật</h2>
+    <div class="products">
+      <div class="product">
+      <img src="anh/15PRM.webp" alt="iPhone 15 Pro Max" />
+      <p><strong>iPhone 15 Pro Max</strong></p>
+      <p class="price">26.990.000đ</p>
+      <p>
+        - Màn hình: 6.7" Super Retina XDR OLED<br>
+        - Chip: Apple A17 Pro<br>
+        - RAM: 8GB – ROM: 256GB<br>
+        - Camera: 48MP + 12MP + 12MP<br>
+        - Pin: 4422 mAh, sạc nhanh 20W
+      </p>
+      <a href="phone/15prm.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('iPhone 15 Pro Max', 26990000)">Thêm vào giỏ</button>
+    </div>
+
+      
+     <div class="product">
+      <img src="anh/ip11.webp" alt="iPhone 11" />
+      <p><strong>iPhone 11</strong></p>
+      <p class="price">9.990.000đ</p>
+      <p>
+        - Màn hình: 6.1 inch Liquid Retina HD (LCD), độ phân giải 828 x 1792<br>
+        - Chip: Apple A13 Bionic<br>
+        - RAM: 4GB<br>
+        - Camera: 2MP + 12MP + 12MP<br>
+        - Pin:3110 mAh, hỗ trợ sạc nhanh 18W
+      </p>
+      <a href="phone/11.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('iPhone 11', 9990000)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="product">
+      <img src="anh/Galaxy S24 Ultra.jpg" alt="Sam Sung Galaxy S24 Ultra" />
+      <p><strong>SamSung Galaxy S24 Ultra</strong></p>
+      <p class="price">23.990.000đ</p>
+      <p>
+        - Màn hình: 6.8" QHD+ Dynamic AMOLED 2X 120Hz<br>
+        - Chip: Snapdragon 8 Gen 3<br>
+        - RAM: 12GB – ROM: 256GB<br>
+        - Camera: 200MP + 50MP + 12MP + 10MP<br>
+        - Pin: 5000 mAh, sạc nhanh 45W
+      </p>
+      <a href="phone/Galaxy S24 Ultra.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('SamSung Galaxy S24 Ultra', 23990000)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="product">
+      <img src="anh/opporeno14pro.jpg" alt="Oppo Reno 14 Pro" />
+      <p><strong>Oppo Reno 14 Pro</strong></p>
+      <p class="price">16.990.000đ</p>
+      <p>
+        - Màn hình: AMOLED 6.7", Full HD+, 120Hz, HDR10+<br>
+        - Chip: MediaTek Dimensity 9200+ (4nm)<br>
+        - RAM: 12GB / 16GB<br>
+        - Camera: 50MP + 8MP + 2MP + 32MP<br>
+        - Pin: 5000mAh, sạc nhanh SuperVOOC 80W
+      </p>
+      <a href="phone/opporeno14.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('Oppo Reno 14 Pro', 16990000)">Thêm vào giỏ</button>
+    </div>
+
+    <div class="product">
+        <img src="anh/pixel 8.jpg" alt="Pixel 8 Pro" />
+      <p><strong>Google Pixel 8 Pro</strong></p>
+      <p class="price">13.990.000đ</p>
+      <p>
+        - Màn hình: LTPO OLED 6.7", 1344×2992, 120Hz, HDR10+, 2400 nits<br>
+        - Chip: Snapdragon 8 Gen 3<br>
+        - RAM: 12GB – ROM: 256GB<br>
+        - Camera: 50MP + 48MP + 48MP + 10.5MP<br>
+        - Pin: 5050mAh, sạc nhanh 30W
+      </p>
+      <a href="phone/GooglePixel8Pro.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('Pixel 8 Pro', 13990000)">Thêm vào giỏ</button>
+    </div>
+
+      <div class="product">
+        <img src="anh/rog7.jpg" alt="ROG Phone 7" />
+        <p>ROG Phone 7</p>
+        <p class="price">18.990.000đ</p>
+        <p>
+          -Màn hình:AMOLED 6.78 inch,  độ phân giải Full HD(2448 × 1080) <br>
+          - Chip: Qualcomm Snapdragon 8 Gen 2 (4nm), GPU Adreno 740 <br>
+          - RAM: 12GB hoặc 16GB LPDDR5X <br>
+          - Camera: 50MP + 13MP + 5MP + 32MP<br>
+          - Pin: 6000mAh, hỗ trợ sạc nhanh 65W
+        </p>
+        <a href="phone/rog7.html" class="btn btn-outline-primary">Xem chi tiết</a>
+        <button onclick="addToCart('ROG Phone 7', 18990000)">Thêm vào giỏ</button>
+      </div>
+
+     
+
+  
+
+      <div class="product">
+        <img src="anh/redmi note 14pro.jpg" alt="Xiaomi redmi note 14 pro" />
+        <p> Xiaomi Redmi Note 14 Pro</p>
+        <p class="price">6.990.000đ</p>
+        <p>
+          -Màn hình: AMOLED 6.67", độ phân giải 1.5K, tần số quét 120Hz, Gorilla Glass Victus 2 <br>
+          - Chip: MediaTek Helio G100 Ultra (4G) hoặc Dimensity 7300 Ultra (5G)<br>
+          - RAM: 8GB / 12GB LPDDR4X<br>
+          - Camera: 200MP + 8MP + 2MP + 32MP<br>
+          - Pin: 5500mAh, sạc nhanh 45W
+        </p>
+        <a href="phone/xiaomiredminote14pro.html" class="btn btn-outline-primary">Xem chi tiết</a>
+        <button onclick="addToCart('Xiaomi Redmi Note 14 Pro', 6999000)">Thêm vào giỏ</button>
+      </div>
+
+    </div>
+  </section>
+  <!-- PHỤ KIỆN -->
+  <section class="section" id="phu-kien">
+    <h2>Phụ Kiện Chính Hãng</h2>
+    <div class="products">
+      <div class="product">
+        <img src="anh/air pod2.jpg" alt="AirPods Pro 2" />
+        <p>AirPods Pro 2</p>
+        <p class="price">5.990.000đ</p>
+        <p>
+          - Thiết kế: In-ear với eartips silicon
+          - Chip: Chip Apple H2 trong tai nghe, Chip U1 trong hộp sạc<br>
+          - Chất lượng âm thanh: Âm thanh chi tiết hơn, hỗ trợ Spatial Audio
+        </p>
+        <a href="phukien/airpod2.html" class="btn btn-outline-primary">Xem chi tiết</a>
+        <button onclick="addToCart('AirPods Pro 2', 5990000)">Thêm vào giỏ</button>
+      </div>
+      
+      <div class="product">
+        <img src="anh/sacduphong.jpg" alt="Sạc dự phòng" />
+        <p>Sạc Xmobile 10000mAh</p>
+        <p class="price">390.000đ</p>
+        <p>dòng T‑series hỗ trợ PD/QC 22.5 W, tốc độ sạc nhanh</p>
+        <a href="phukien/sacduphong.html" class="btn btn-outline-primary">Xem chi tiết</a>
+      <button onclick="addToCart('Sạc Xmobile', 390000)">Thêm vào giỏ</button>
+    </div>
+        
+    
+
+      
+      
+    </div>
+  </section>
+
+  <!-- GIỎ HÀNG -->
+  
+
+  
+
+  <!-- LIÊN HỆ -->
+  <footer id="contact">
+    <p>📞 Hotline: <a href="tel:0393094929" style="color:#ff8080;">0393 094 929</a></p>
+    <p>&copy; K2B Smart Store📱 </p>
+  </footer>
+
+
+
+  
+  <!-- SCRIPT -->
+  <script>
+   function addToCart(name, price) {
+      const confirmAdd = confirm(`${name} đã được chọn. Bạn có muốn thêm vào giỏ hàng không?`);
+
+      if (confirmAdd) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name: name, price: price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        if (confirm("Bạn có muốn xem giỏ hàng không?")) {
+          window.location.href = 'giohang.html';
+        }
+      } else {
+        alert("Bạn đã hủy thêm vào giỏ hàng.");
+      }
+    }
+
+    function displayCart() {
+      const cartContainer = document.getElementById('cartItems');
+      const totalElement = document.getElementById('totalPrice');
+      cartContainer.innerHTML = '';
+      if (cartItems.length === 0) {
+        cartContainer.innerHTML = '<p>Giỏ hàng trống.</p>';
+        totalElement.textContent = '0';
+        return;
+      }
+      let total = 0;
+      cartItems.forEach(item => {
+        const div = document.createElement('div');
+        div.textContent = `${item.name} - ${item.price.toLocaleString()}đ`;
+        cartContainer.appendChild(div);
+        total += item.price;
+      });
+      totalElement.textContent = total.toLocaleString();
+    }
+
+    function checkout() {
+      if (cartItems.length === 0) {
+        alert("Giỏ hàng của bạn đang trống!");
+      } else {
+        const confirmCheckout = confirm("Bạn có chắc chắn muốn thanh toán không?");
+      }
+    }
+    function qrcode() {
+          if (confirmCheckout) {
+          
+          alert("Cảm ơn bạn đã mua hàng! Chúng tôi sẽ liên hệ sớm.");
+          cartItems.length = 0;
+          displayCart();
+        } else {
+          alert("Bạn đã hủy thanh toán.");
+          
+        }
+    }
+    
+
+    const searchInput = document.getElementById('searchInput');
+    const products = document.querySelectorAll('.product');
+
+    searchInput.addEventListener('input', function () {
+      const keyword = this.value.toLowerCase();
+      let found = false;
+      products.forEach(product => {
+        const text = product.textContent.toLowerCase();
+        const match = text.includes(keyword);
+        product.style.display = match ? 'block' : 'none';
+        if (match) found = true;
+      });
+      document.getElementById('noResult').style.display = found ? 'none' : 'block';
+    });
+    
+
+
+    
+
+
+  </script>
+
+<script>
+  const userDiv = document.getElementById('user-info');
+  const user = localStorage.getItem('loggedInUser');
+
+  if (user) {
+    userDiv.innerHTML = `👤 Xin chào, <b>${user}</b> | <a href="#" onclick="logout()" style="color:white;">Đăng xuất</a>`;
+  } else {
+    userDiv.innerHTML = `<a href="dangkydangnhap.html" style="color:white;">Đăng nhập / Đăng ký</a>`;
+  }
+
+  function logout() {
+    localStorage.removeItem('loggedInUser');
+    alert("Đã đăng xuất!");
+    location.reload();
+  }
+</script>
+
+  
+</body>
+<script>
+
+    // Thêm sản phẩm mới vào giỏ
+    cart.push({ name: name, price: price });
+
+    // Lưu lại vào localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Hỏi người dùng có muốn sang giỏ hàng không
+    if (confirm(`${name} đã được thêm vào giỏ hàng. Bạn có muốn xem giỏ hàng không?`)) {
+      window.location.href ='giohang.html'; // 👉 chuyển sang trang giỏ hàng
+    }
+  
+</script>
+</html>

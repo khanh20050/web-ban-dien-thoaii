@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>K2B Smart Store</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: orange;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .search-bar input {
+      width: 400px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    nav {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: orange;
+      color: white;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: orange;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    .product p {
+      margin: 10px 0;
+    }
+
+    .price {
+      color: red;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: orange;
+    }
+
+    footer {
+      background-color: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    .search-wrapper {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-wrapper input {
+      width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #noResult {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"> K2B Smart Store📱</div>
+    
+  </header>
+  <h2>Giỏ Hàng và Thanh Toán</h2>
+
+  <div id="cartItems">Không có sản phẩm nào.</div>
+  <p class="total">Tổng tiền: <span id="totalPrice">0</span>đ</p>
+
+  <button onclick="checkout()">Thanh toán</button>
+
+  <button onclick="goBack()"><a href="index.html"> Quay lại cửa hàng</a></button>
+
+  <script>
+    // Lấy dữ liệu từ localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function displayCart() {
+      const cartContainer = document.getElementById('cartItems');
+      const totalElement = document.getElementById('totalPrice');
+      cartContainer.innerHTML = '';
+
+      if (cartItems.length === 0) {
+        cartContainer.textContent = 'Giỏ hàng trống.';
+        totalElement.textContent = '0';
+        return;
+      }
+
+      let total = 0;
+      cartItems.forEach(item => {
+        const div = document.createElement('div');
+        div.textContent = `${item.name} - ${item.price.toLocaleString()}đ`;
+        cartContainer.appendChild(div);
+        total += item.price;
+      });
+
+      totalElement.textContent = total.toLocaleString();
+    }
+
+    function checkout() {
+  if (cartItems.length === 0) {
+    alert("Giỏ hàng đang trống!");
+    return;
+  }
+
+  if (confirm("Bạn có chắc muốn thanh toán không?")) {
+    // ✅ Xóa giỏ hàng khỏi localStorage
+    localStorage.removeItem('cart');
+
+    // ✅ Điều hướng sang trang QR thanh toán
+    window.location.href = "qrthanhtoan.html";
+  }
+}
+    // Hiển thị giỏ hàng khi trang tải
+    displayCart();
+  </script>
+</body>
+</html>
